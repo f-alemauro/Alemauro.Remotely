@@ -5,9 +5,7 @@ Remotely is an home-made tools to control a device remotely.
 
 ## Usage
 
-```TBD
-```
-
+Run build/Alemauro.Remotely
 ## Roadmap
 
 

@@ -8,6 +8,8 @@ class Remotely
         void stop();
         void setup();
         Remotely();
+    private:
+        int keyboard_file;
 };
 
 #endif

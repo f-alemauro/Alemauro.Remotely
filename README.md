@@ -2,13 +2,38 @@
 
 Remotely is an home-made tools to control a device remotely.
 
+***
 
 ## Usage
 
-Run build/Alemauro.Remotely
+### How to build Alemauro.Remotely
+    1. mkdir build
+    1. cd build
+    1. cmake ..
+    1. make
+
+### How to run Alemauro.Remotely
+    1. sudo ./Alemauro.Remotely
+
 ## Roadmap
-
-
+1. Implement server and client sides for **Unix system**:
+    1. Implement **keyboard** usage:
+        * Reading keyboard commands;
+        * Packing input from keyboard;
+        * Sending packet from server to clients;
+        * Receiving packet from server;
+        * Applying received keyboard commands
+    1. Implement **mouse** usage:
+        * Reading mouse commands;
+        * Packing input from mouse;
+        * Sending packet from server to clients;
+        * Receiving packet from server;
+        * Applying mouse keyboard commands
+    1. Implement **video** feedback:
+        * Capturing the screen from the client
+        * Compressing the stream
+        * Sending to the server
+        * Showing the remote screen
 
 ## Support
 

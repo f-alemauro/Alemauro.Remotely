@@ -12,6 +12,7 @@ Remotely is an home-made tools to control a device remotely.
     1. cmake ..
     1. make
 
+
 ### How to run Alemauro.Remotely
     1. sudo ./Alemauro.Remotely
 
@@ -19,6 +20,8 @@ Remotely is an home-made tools to control a device remotely.
 1. Implement server and client sides for **Unix system**:
     1. Implement **keyboard** usage:
         * Reading keyboard commands;
+            * Parsing **input_event struct**. You may find several mapping at */usr/include/linux/input-event-codes.h* 
+            * How should I detected **key combinations** such as CTRL-C? Do I have to use *EV_SYN* event type?
         * Packing input from keyboard;
         * Sending packet from server to clients;
         * Receiving packet from server;

@@ -12,8 +12,21 @@ void Remotely::run()
     while(true)
     {
         size_t bytes_read = read(keyboard_file, &ev, sizeof(ev));
-        std::cout << bytes_read << std::endl;
+        if (bytes_read < sizeof(struct input_event)){
+            std::cerr<<"Reading keyboard file failed";
+            continue;
+        }
+        else{
+            if (ev.type == EV_KEY){
+                std::cout << ev.code << std::endl;
+            //std::cout << ev.code << std::endl;
+            //std::cout << ev.value << std:endl;
+            }
+            else if (ev.type == EV_LED){
+                std::cout << "LED: "+ev.code << std::endl;   
+            }
 
+        }
     }
 }
 

@@ -1,6 +1,8 @@
 #ifndef _REMOTELY_
 #define _REMOTELY_
 
+#include<string.h>
+
 class Remotely
 {
     public:
@@ -10,6 +12,7 @@ class Remotely
         Remotely();
     private:
         int keyboard_file;
+        
 };
 
 #endif

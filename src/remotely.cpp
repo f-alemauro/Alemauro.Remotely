@@ -5,6 +5,82 @@
 #include <errno.h> /* errno */
 #include <unistd.h> /* read() */
 
+#define NUM_KEYCODES 71
+
+const char *keycodes[] = {
+    "RESERVED",
+    "ESC",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "MINUS",
+    "EQUAL",
+    "BACKSPACE",
+    "TAB",
+    "Q",
+    "W",
+    "E",
+    "R",
+    "T",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "LEFTBRACE",
+    "RIGHTBRACE",
+    "ENTER",
+    "LEFTCTRL",
+    "A",
+    "S",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "SEMICOLON",
+    "APOSTROPHE",
+    "GRAVE",
+    "LEFTSHIFT",
+    "BACKSLASH",
+    "Z",
+    "X",
+    "C",
+    "V",
+    "B",
+    "N",
+    "M",
+    "COMMA",
+    "DOT",
+    "SLASH",
+    "RIGHTSHIFT",
+    "KPASTERISK",
+    "LEFTALT",
+    "SPACE",
+    "CAPSLOCK",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "NUMLOCK",
+    "SCROLLLOCK"
+};
+
 void Remotely::run()
 {
     struct input_event ev;
@@ -18,14 +94,25 @@ void Remotely::run()
         }
         else{
             if (ev.type == EV_KEY){
-                std::cout << ev.code << std::endl;
-            //std::cout << ev.code << std::endl;
-            //std::cout << ev.value << std:endl;
+                if(ev.code > 0 && ev.code < NUM_KEYCODES){
+                    if (ev.value == 1){
+                        std::cout << "Pressed " << keycodes[ev.code] << std::endl;
+                    }
+                    else if (ev.value == 0){
+                        std::cout << "Released " << keycodes[ev.code] << std::endl;
+                    }
+                    else if (ev.value == 2){
+                        std::cout << "Repeated " << keycodes[ev.code] << std::endl;
+                    }
+                }
+                
             }
-            else if (ev.type == EV_LED){
-                std::cout << "LED: "+ev.code << std::endl;   
-            }
-
+            //else if (ev.type == EV_LED){
+            //    std::cout << "LED: " + std::to_string(ev.code) << std::endl;   
+            //}
+            //else if (ev.type == EV_SYN){
+            //    std::cout << ev.code << std::endl;   
+            //}
         }
     }
 }
